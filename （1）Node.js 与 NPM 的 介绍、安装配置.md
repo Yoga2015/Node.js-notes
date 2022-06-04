@@ -219,3 +219,94 @@ npm update jquery
 npm search jquery
 ```
 
+### 通过 Node.js 新建一个项目并且初始化：
+
+创建一个文件夹，并重命名为 项目名称 ，并在当前文件夹内的 进行初始化项目 ，如下：
+
+```typescript
+npm init     // 初始化项目 
+
+注意:
+npm init
+	该命令会要求你输入一些参数，包括应用名、版本等，能够直接按回车设置为默认值。
+    须要注意的是，其中有一项为 entry point: ，它的值为项目的入口文件(默认是index.js )，你能够设置成你想要的名称，例如 app.js ，在这儿我就默认选择了 index.js 
+```
+
+使用**npm init** **-y**命令生成 pakage ison文件，加 **-y** 是默认选项
+
+#### Node.js中的Package.json文件
+
+**Package.json文件的作用** :  项目描述文件，记录了当前项目信息，例如项目名称、版本、作者、github地址、当前项目依赖了哪些第三方模块等。
+
+##### Package.json 属性说明
+
+```
+{
+  "name": "NodeDemo",   //项目名字
+  "version": "1.0.0",  //版本
+  "description": "",   //项目描述
+  "main": "app.js",  //项目运行主入口文件
+  "scripts": {   //npm 的脚本
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],  //关键字描述当前项目
+  "author": "",  //项目的作者姓名
+  "license": "ISC",  //项目遵循的协议，默认ISC：开放源代码的协议
+  "dependencies": {},  //项目依赖
+  "devDependencies": {},  //开发依赖
+}
+
+```
+
+- **main** - main 字段指定了程序的主入口文件，require('moduleName') 就会加载这个文件。这个字段的默认值是模块根目录下面的 index.js。
+- **dependencies** - 依赖包列表。如果依赖包没有安装，npm 会自动将依赖包安装在 node_module 目录下。
+- **devDependenciesv** 开发的依赖  和  dependencies 生成环境依赖 的关系： 开发所依赖的包在开发时期使用。
+- **repository**  //模块/包代码存放的地方的类型，可以是 git 或 svn，git 可在 Github 上。  
+
+##### package.json中 添加 脚本
+
+```typescript
+  "scripts": {
+    "dev": "gulp -v",
+    "greeting":"echo hello"     //添加 脚本
+  },
+```
+
+![image-20220124140059294](https://user-images.githubusercontent.com/94358089/171985516-64dd1eee-ad7b-4809-8b47-b5951bebdc93.png)
+
+ "runjs":"node ./03-scripts/script1.js"
+
+![image-20220124140945641](https://user-images.githubusercontent.com/94358089/171985549-d91351cc-3675-4576-9080-df50347a8ada.png)
+
+
+```typescript
+ "runjs":"node ./03-scripts/script1.js && node ./03-scripts/script2.js"
+```
+
+可以脚本并行 & 、脚本串行 &&，改变执行顺序。
+
+![image-20220124142500532](https://user-images.githubusercontent.com/94358089/171985583-a09cf2c2-fbb1-4229-aa3d-b567abff0f6f.png)
+
+在package.json中自定义字段 ：
+
+```
+  "config": {
+    "env":"10"
+  }
+```
+
+**package.json**
+
+npm init -y    这样就创建了package.json ，成为我们当前项目的配置文件
+
+![image-20220410110828316](https://user-images.githubusercontent.com/94358089/171985601-6ac8ed42-cc86-4e5b-a142-97b585b87c57.png)
+
+Node.js 本身就是生产环境，所以他引入的所有工具都是生产环境的依赖 -S
+
+**package-lock.json 的作用**
+
+就是 锁定安装时的包的版本号，并且需要上传到git，以保证其他人在npm install时大家的依赖能保证一致。
+
+package-lock.json 是在 `npm install`时候生成的一份文件，用以记录当前状态下实际安装的各个npm package的具体来源和版本号。
+
+它有什么用呢？因为npm是一个用于管理package之间依赖关系的管理器，它允许开发者在pacakge.json中间标出自己项目对npm各库包的依赖。你可以选择以如下方式来标明自己所需要库包的版本。
