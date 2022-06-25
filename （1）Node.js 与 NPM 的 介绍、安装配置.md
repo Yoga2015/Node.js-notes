@@ -229,7 +229,8 @@ npm search jquery
 
 查看当前 Nodejs 的版本为 v14.19.0
 
-![image-20220213161053669](F:\Typora\typora-user-images\3efd733a51b4f7785d4caf21e811bd11.png)
+![image](https://user-images.githubusercontent.com/94358089/175780668-96528a38-1a29-4308-b0b0-a477bf68a2ae.png)
+
 
 首先下载 n 这个用于更新 [node](https://so.csdn.net/so/search?q=node&spm=1001.2101.3001.7020) 版本的工具
 
