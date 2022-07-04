@@ -36,16 +36,17 @@ console.log(pathAdress)
 
 ### 内置模块 - url
 
-引入url 模块
-
 ```javascript
-var url = require('url');    //
+var url = require('url');    //引入URL内置模块
 ```
 
  **基本语法**
 
-| url.parse(地址 ，true) ； | 获取参数 |
-| ------------------------- | -------- |
+url.parse(urlString[, parseQueryString[, slashesDenoteHost]])
+
+| url.parse(地址 ，true) ； | 获取参数     |
+| ------------------------- | ------------ |
+| url.resolve()             | 合并目录解析 |
 
 ![watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSn6IGq5piO56CB5Yac5b6Q,size_20,color_FFFFFF,t_70,g_se,x_16](https://user-images.githubusercontent.com/94358089/177195337-ebcc8d35-d1c5-4ec2-a443-51c6b012147f.png)
 
