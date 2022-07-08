@@ -1,4 +1,29 @@
-## path模块 、url模块、querystring模块 
+## os模块、path模块 、url模块、querystring模块 
+
+
+
+### os模块
+
+`os` 模块提供了一些基本的系统操作函数。 可以使用以下方式访问它：
+
+```js
+const os = require('os');
+```
+
+**案例：**获取系统信息
+
+```javascript
+var os = require('os');
+
+console.log("操作系统的主机名"+os.hostname());
+console.log("操作系统名 "+os.type());
+console.log("操作系统 CPU 架构 "+os.arch());
+console.log("操作系统的发行版本  "+os.release());
+console.log('系统内存总量 : ' + os.totalmem() + " bytes.");
+```
+![image](https://user-images.githubusercontent.com/94358089/178009581-461fa221-2911-46e8-b334-0ed3e5921066.png)
+
+
 
 实际开发项目时，需要引入一些依赖的模块 来才能完整地制作项目。
 
@@ -30,8 +55,7 @@ const pathAdress = path.parse('/home/user/dir/file.txt');
 console.log(pathAdress)
 ```
 
-![解析路径](https://user-images.githubusercontent.com/94358089/177195242-19ee4f3b-260d-4298-beae-7487fd16b944.png)
-
+![image](https://user-images.githubusercontent.com/94358089/178009605-20798a02-a6ec-45a8-9324-1e14b3ed241f.png)
 
 
 ### 内置模块 - url
@@ -42,13 +66,21 @@ var url = require('url');    //引入URL内置模块
 
  **基本语法**
 
-url.parse(urlString[, parseQueryString[, slashesDenoteHost]])
+| url.parse(地址 ，true) ； | 获取参数 |
+| ------------------------- | -------- |
 
-| url.parse(地址 ，true) ； | 获取参数     |
-| ------------------------- | ------------ |
-| url.resolve()             | 合并目录解析 |
+**案例：**获取地址的信息
 
-![watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5aSn6IGq5piO56CB5Yac5b6Q,size_20,color_FFFFFF,t_70,g_se,x_16](https://user-images.githubusercontent.com/94358089/177195337-ebcc8d35-d1c5-4ec2-a443-51c6b012147f.png)
+```javascript
+const url = require("url");
+
+const urlString = url.parse("https://www.npmjs.com/package/url");
+
+console.log(urlString);
+```
+
+![image](https://user-images.githubusercontent.com/94358089/178009645-f62527fd-3c9c-4769-aaee-716ba2c479d8.png)
+
 
 
 ### querystring模块   (已弃用)
