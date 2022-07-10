@@ -244,8 +244,7 @@ exports = module.exports = {};
 看一张图理解这里更清楚：
 
 
-
-![img](F:\Typora\typora-user-images\v2-b324f3140f443833a0f0fbb96aeca235_720w.jpg)
+![image](https://user-images.githubusercontent.com/94358089/178152306-ef49cd69-33fb-4278-a426-8c4fce4b0fda.png)
 
 如果要对外暴露属性或方法，就用 exports 就行，要暴露对象(类似class，包含了很多属性和方法)，就用 module.exports。
 
