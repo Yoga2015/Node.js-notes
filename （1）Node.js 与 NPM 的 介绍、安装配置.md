@@ -1,4 +1,4 @@
-### Node.js 是什么 ?  
+### 什么是Node.js  ?  
 
 ​		Node.js 发布于2009年5月，由Ryan Dahl开发的。 Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。V8是google开源的JavaScript引擎，用于执行JavaScript，类似JVM执行java字节码。所有浏览器都有运行网页上JavaScript的JavaScript引擎。例如：Safari 有 JavaScriptCore引擎，Firefox有 Spidermonkey的引擎，Chrome有V8引擎。
 
