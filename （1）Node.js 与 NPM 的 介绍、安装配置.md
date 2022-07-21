@@ -70,7 +70,7 @@ Node.js 安装包及源码下载地址为：https://nodejs.org/en/download/。
 
 在 "系统变量" 中设置 1 项属性，Node_path (大小写无所谓) , 若已存在则点击"编辑"，不存在则点击"新建"。
 
-![img](F:\Typora\typora-user-images\906897-20220322150314120-241286044.png)
+![image](https://user-images.githubusercontent.com/94358089/180282595-3f177555-0a6e-447f-bd85-32bd36f49a00.png)
 
 配置完成后，来检测Node是否安装成功：
 
