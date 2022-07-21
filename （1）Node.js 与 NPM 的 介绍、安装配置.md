@@ -84,23 +84,30 @@ Node.js 安装包及源码下载地址为：https://nodejs.org/en/download/。
 npm install npm -g
 ```
 
-**使用淘宝 NPM 镜像**：
+#### 熟悉npm核心特性
+
+##### 理解npm “仓库” 与 “ 依赖” 的概念
+
+NPM，它提供了一个官方的仓库，但是在国内，由于一些特定的原因，我们需要翻墙才能稳定地使用它，否则就很容易遇到各种各样的问题，尤其是网络问题，因此一般的做法，我们会使用淘宝提供的仓库，淘宝提供这个仓库，他是一个镜像仓库，他把那个NPM的包全部都映射到一个国内的现象，那这样的话，我们去下载这个包的时候，我们就相当于是在像一个国内的站点发起请求。那这个时候这个网络就相对稳定一点，所以我们现在首先是把我们的这个仓库镜像设置为淘宝仓库镜像
+
+##### 手工切换源
+
+**查看当前源**
+
+```
+npm config get registry
+```
+
+##### 淘宝 NPM 镜像
 
 ​		国内直接使用 npm 的官方镜像是非常慢的，这里推荐使用淘宝 NPM 镜像。淘宝 NPM 镜像是一个完整 npmjs.org 镜像，你可以用此代替官方版本，同步频率目前为 10分钟 一次以保证尽量与官方服务同步。
 
 你可以使用淘宝定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm:
 
 ```
-npm install -g cnpm --registry=https://registry.npmmirror.com
+npm config set registry https://registry.npm.taobao.org
 
 这样就可以使用 cnpm 命令来安装模块了：    cnpm install [name]
-
-安装nrm 工具：    注意有问题！
-   	  npm install nrm -g      // 全局安装nrm工具 换源
-    
-    使用nrm :
-        查看下载源：nrm ls 
-        换源：nrm use taobao   // 从国外的 换成 国内的淘宝源  
 ```
 
 ##### 使用 npm 命令安装模块
@@ -110,6 +117,14 @@ npm 安装 Node.js 模块语法格式如下：
 ```
 npm install <Module Name>
 ```
+
+**npm install 的过程：**
+
+首选寻找 **包版本信息文件**（package.json）, 依照它来进行安装，
+
+查package.json中的依赖，并检查项目中其他的版本信息文件
+
+如果发现了新包，就更新版本信息文件
 
 ##### **查看安装信息**
 
@@ -130,26 +145,45 @@ jquery安装完毕会记录到package.json中，如下：
 	 "dependencies": {
 	      "jquery": "^3.6.0"
 	  }
-
 初始化一个项目，或者 记录项目中都有哪些第三方模块：
 通过 npm init -y 命令为你的项目创建一个package.json文件，（自动生成一个package.json文件）
 这个文件可以记录你的项目中都有哪些第三方的依赖   
 
-install 可以简写成 i    例如：npm i jquery
-
-npm i  和  npm install  的区别, windows下实际区别点主要如下：
-
-① npm i 安装的模块及依赖，使用npm uninstall是没有办法删除的，必须使用npm uninstall i才可以删除
-② npm i 会帮助检测与当前node最匹配的npm的版本号，并匹配出相互依赖的npm包应该升级的版本号
-③ npm i 安装的一些包，在当前的node版本下是没有办法使用的，必须使用建议版本
-④ npm i 安装出现问题是不会出现npm-debug.log文件的，但npm install 安装出现问题是有这个文件的。
 ```
 
 ##### 第三方模块分成两类：
 
+在NPM依赖中，依赖就主要分为两种：
+
+一种是 dependencies 生产环境的依赖  -S 
+
+一种是 devdependencies 开发环境的依赖  -D
+
+```
+npm install jquery --save-dev  ==   npm install jquery -D
+```
+
+这两个包都会被安装到 node_modules中。但是当我们执行：
+
+```
+npm install --only=prod     //指定生产环境
+npm install --only=dev     //指定开发环境
+```
+
+那这个就相当于我们指定了生产环境。这时候，他只会去安装dependencies 中的包：
+
+当我们指定了这个环境为dev的时候，他就只会安装的devdependencies 中的包，通过这样添加安装参数，我们就可以实现环境区分。
+
+当工程规模比较大的时候，通过只安装当前环境的包，就可以加快总体安装的一个速度。
+
+另外一个需要注意的是，当我们把这个包发布出去之后，别人想要通过 npm install 来安装的这个包时，那这种情况下只会去安装他的dependencies 中的包，而会忽略devdependencies ，这就意味着所有与功能相关的依赖都应该放在dependencies 里面。
+
+而devdependencies 往往放一些像构建工具，质量检测工具等等，这种只有本地开发时才用到了包，我们就会放在devdependencies 里面，那到这里，大家就理解了，NPM 的“仓库” 与 “ 依赖”是怎么一回事。
+
 ```javascript
     开发模块：开发项目时需要的用到的模块  仅仅是开发时需要
     生产模块：项目上线时还需要的用的模块   表示把###安装成开发依赖
+    Node.js 本身就是生产环境，所以他引入的所有工具都是生产环境的依赖 -S
     
     npm i ### --save-dev   表示把###安装成开发依赖
     npm i ### -D           表示把###安装成开发依赖
@@ -218,7 +252,8 @@ npm update jquery
 ```
 npm search jquery
 ```
-```
+
+##### 
 npm                              yarn
 
 npm init                         yarn init              // 初始化
