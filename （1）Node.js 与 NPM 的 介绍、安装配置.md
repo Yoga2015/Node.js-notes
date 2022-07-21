@@ -34,10 +34,7 @@ Node.js 可以解析 JavaScript 代码，（没有浏览器安全级别的限制
 
 浏览器安全级别的限制： ajax 测试   browser-safe-sandbox
 
-
-
 Node.js 使 前端程序员 可以写 后台管理程序的代码 用来完成一些对后端的操作，类似于php，Java等语言，但其实本质上Node.js 就是运行在服务端的 JavaScript，它是一种运行环境，使前端程序员可以搭建自己的服务器完成一些后端操作。
-
 
 
 ### NPM 是什么?
@@ -57,7 +54,6 @@ NPM是Node.js标准的软件 包管理器 。2010年底，Node.js 的包管理�
 ```
 
 **想让 Node.js 发挥到极致，得开发自己的包，也需要第三方的包、也需要内置的包。**
-
 
 
 ### node.js 安装 、npm 安装
@@ -253,31 +249,18 @@ npm update jquery
 npm search jquery
 ```
 
-##### 
-npm                              yarn
+![56](https://user-images.githubusercontent.com/94358089/180283705-c270b43c-b870-4c34-9894-d1684c4343ee.png)
 
-npm init                         yarn init              // 初始化
-npm i | install                  yarn  (install)        // 安装依赖包
-npm i x --S | --save             yarn add  x            // 安装生产依赖并保存包名
-npm i x --D | --save-dev         yarn add x -D  // 安装开发依赖并保存包名
-npm un | uninstall  x            yarn remove            // 删除依赖包
-npm i -g | npm -g i x            yarn global add x      // 全局安装
-npm un -g x                      yarn global remove x   // 全局下载
-npm run dev                      yarn dev | run dev     // 运行命令
 
-npm view jquery versions   npm查看所有版本
-```
-
-### windows下Node升级版本
+##### windows下Node升级版本
 
 卸载原有 Node，访问[node官网](http://nodejs.cn/download/)，下载最新版本或者稳定版本安装即可。
 
-### ubuntu系统 更新Nodejs版本
+##### ubuntu系统 更新Nodejs版本
 
 查看当前 Nodejs 的版本为 v14.19.0
 
-![image](https://user-images.githubusercontent.com/94358089/175780668-96528a38-1a29-4308-b0b0-a477bf68a2ae.png)
-
+![image](https://user-images.githubusercontent.com/94358089/180282913-2ad683e5-2464-43ae-aeb7-b3a287fb4421.png)
 
 首先下载 n 这个用于更新 [node](https://so.csdn.net/so/search?q=node&spm=1001.2101.3001.7020) 版本的工具
 
@@ -299,4 +282,5 @@ sudo n stable
 sudo n （node版本号）
 sudo n node-v16.14.0
 ```
+
 
